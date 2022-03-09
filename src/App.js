@@ -1,17 +1,18 @@
 import './App.css';
 import axios from "axios";
 import { useEffect, useState } from "react";
-
-//test change comment
+import ProductList from "./components/ProductList"
+import React from "react";
 
 function App() {
 
-  const [items, setItems] = useState([]);
+  const [products, setProducts] = useState([]);
   
   useEffect(()=>{
     axios.get("http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline")
       .then(res => {
-        console.log(res);
+        // console.log(res);
+        setProducts(res.data)
       })
       .catch(err => {
         console.log(err);
@@ -21,7 +22,7 @@ function App() {
   return (
     <div className="App">
       <h1>E-Store</h1>
-      <productList></productList>
+      <ProductList products={products}/>
     </div>
   );
 }

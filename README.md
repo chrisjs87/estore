@@ -15,3 +15,4 @@ Displaying the list of products in a grid type pattern with Name, Price, Star Ra
 Functioning Modal with particular product Image, Name, Description, Star Rating, Price, Buttons to product pages, and Listing of product colors.
 
 Two filters, Product Type and Rating are functional, but one way, and have many bugs before being fully polished and functional.
+IMPORTANT: In order to see the extent of filter functionality, you must refresh the page between each attempt at filtering.

@@ -4,12 +4,22 @@ import { useEffect, useState } from "react";
 import ProductList from "./components/ProductList";
 import React from "react";
 import ProductModal from "./components/ProductModal";
-import Typography from '@mui/material/Typography';
+import Typography from "@mui/material/Typography";
+import ProductFilter from "./components/ProductFilter"
 
 function App() {
 
+  const initialFilterValues = {
+    price: '',
+    productType: '',
+    productColors: '',
+    rating: '',
+  }
+
   const [products, setProducts] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [filterValues, setFilterValues] = useState(initialFilterValues);
+  
 
   const [modalItem, setModalItem] = useState({});
   let myVariable = `App ${showModal ? "modalActive" : ''}`
@@ -32,7 +42,10 @@ function App() {
     <>
     <div className={myVariable}>
       <Typography variant="h1">Make-Up-E-Store</Typography>
-      <ProductList className="productList" products={products} showModal={showModal} setShowModal={setShowModal} setModalItem={setModalItem}/>
+      <div>
+        <ProductFilter filterValues={filterValues} setFilterValues={setFilterValues}/>
+        <ProductList className="productList" products={products} showModal={showModal} setShowModal={setShowModal} setModalItem={setModalItem}/>
+      </div>
     </div>
     <div>
       {showModal ? <ProductModal className={"productModal"} product={modalItem} setShowModal={setShowModal} setModalItem={setModalItem} /> : null}

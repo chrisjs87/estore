@@ -1,7 +1,13 @@
 import React from "react";
 
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
+// import Container from "@mui/material/Container";
+import Card from "@mui/material/Card";
+
 const ProductModal = (props) => {
-  const { product, setModal } = props;
+  const { product, setShowModal, setModalItem } = props;
 
   const navToProductPage = () => {
     window.open(product.product_link, "_blank")
@@ -11,18 +17,30 @@ const ProductModal = (props) => {
   }
 
   return (
-    <div className="product">
-      <img src={product.image_link} alt="product"/>
-      <h1>Name: {product.name}</h1>
-      <h1>Description: {product.description}</h1>
-      <h1>Rating: {product.rating}</h1>
-      <h1>Price: {product.price}</h1>
-      <h1>Colors</h1>
+    <div className="productModal">
+      <Card>
+        <img src={product.image_link} alt="product"/>
+        <Typography align="left">{product.name}</Typography>
+        <Typography align="left">Description: {product.description}</Typography>
+        <Typography align="left">Rating: {product.rating ? product.rating : "Not Rated"}</Typography>
+        <Typography align="left">${product.price}</Typography>
+        {product.product_colors.length !== 0 ? 
+          <Typography align="left">
+            Colors: {product.product_colors.map((color,index)=>(
+              <span key={index} style={{color: color.hex_value}}>
+                {color.colour_name ? `${color.colour_name}` : "Color" + (index+1) + " "} 
+              </span>))}
+          </Typography>
+          :
+          <Typography align="left">Color options not available</Typography>
+        }
 
-      <button onClick={()=>{navToProductPage()}} >Product Page</button>
-      <button onClick={()=>{navToProductSite()}} >Product Manufacturer Site</button>
-
-      <button onClick={() => {setModal(false)}}>CLOSE MODAL</button>
+        <ButtonGroup variant="contained">
+          <Button onClick={()=>{navToProductPage()}} >Product Page</Button>
+          <Button onClick={()=>{navToProductSite()}} >Product Manufacturer Site</Button>
+          <Button color="secondary" onClick={() => {setShowModal(false); setModalItem({})}}>Return to List</Button>
+        </ButtonGroup>
+      </Card>
     </div>
   );
 }

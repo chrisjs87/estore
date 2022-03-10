@@ -1,26 +1,42 @@
 import React from "react";
-import { useState } from "react"
-import ProductModal from "./ProductModal"
+import { useState } from "react";
+import ProductModal from "./ProductModal";
+
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+// import Container from "@mui/material/Container";
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
 
 const Product = (props) => {
   const { product } = props;
-  const [modal, setModal] = useState(false)
+  // const [modal, setModal] = useState(false)
+  const { showModal, setShowModal, setModalItem } = props;
 
   return (
-    <div className="product">
-      <h1>Name: {product.name}</h1>
-      <h1>Price: {product.price}</h1>
-      <h1>Rating: {product.rating}</h1>
-      <img src={product.image_link} alt="product"/>
-      <button 
-        onClick={() => {
-          setModal(!modal) //true
-        }}
-      >
-        Show More
-      </button>
-      {modal && <ProductModal product={product} setModal={setModal}/>}
-    </div>
+      <Card elevation={3} style={{height: '100%'}}>
+        <CardContent>
+          <img src={product.image_link} alt="product"/>
+          <Typography align="left">{product.name}</Typography>
+          <Typography align="left">${product.price}</Typography>
+          <Typography align="left">Rating: {product.rating ? product.rating + " stars": "Not Rated"}</Typography>
+          <CardActions>
+            <Button 
+              variant="contained"
+              onClick={() => {
+                setModalItem(product)
+                setShowModal(!showModal) //true
+              }}
+            >
+              Show More
+            </Button>
+          </CardActions>
+          {/* <div className="modalContainer">
+            {modal && <ProductModal product={product} setShowModal={setShowModal}/>}
+          </div> */}
+        </CardContent>
+      </Card>
   );
 }
 

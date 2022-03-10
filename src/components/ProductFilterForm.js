@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import Grid from "@mui/material/Grid";
-// import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
@@ -10,7 +9,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { Typography } from "@mui/material";
 
-const ProductFilterAttempt = (props) => {
+const ProductFilterForm = (props) => {
   const { formValues, setFormValues } = props;
 
   const handleInputChange = (e) => {
@@ -19,72 +18,10 @@ const ProductFilterAttempt = (props) => {
       ...formValues,
       [name]: value,
     });
-    console.log(formValues);
   };
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   console.log(formValues);
-  // };
   return (
-    // <form onSubmit={handleSubmit}>
     <form>
       <Grid container alignItems="center" justify="center" direction="column">
-        {/* <Grid item>
-            <div style={{ width: "400px" }}>
-              Rating
-              <Slider
-                value={formValues.rating}
-                onChange={handleSliderChange("rating")}
-                defaultValue={30}
-                step={1}
-                min={0}
-                max={50}
-                marks={[
-                  {
-                    value: 10,
-                    label: "1.0",
-                  },
-                  {
-                    value: 20,
-                    label: "2.0",
-                  },
-                  {
-                    value: 30,
-                    label: "3.0",
-                  },
-                  {
-                    value: 40,
-                    label: "4.0",
-                  },
-                  {
-                    value: 50,
-                    label: "5.0",
-                  },
-                ]}
-                valueLabelDisplay="off"
-              />
-            </div>
-          </Grid> */}
-        {/* <Grid item>
-          <TextField
-            id="rating"
-            name="rating"
-            label="Rating"
-            type="text"
-            value={formValues.name}
-            onChange={handleInputChange}
-          />
-        </Grid> */}
-        {/* <Grid item>
-          <TextField
-            id="age-input"
-            name="age"
-            label="Age"
-            type="number"
-            value={formValues.age}
-            onChange={handleInputChange}
-          />
-        </Grid> */}
         <Grid item>
           <FormControl>
             <FormLabel>Rating</FormLabel>
@@ -201,11 +138,8 @@ const ProductFilterAttempt = (props) => {
             </RadioGroup>
           </FormControl>
         </Grid>
-        {/* <Button variant="contained" color="primary" type="submit">
-          Submit
-        </Button> */}
       </Grid>
     </form>
   );
 };
-export default ProductFilterAttempt;
+export default ProductFilterForm;

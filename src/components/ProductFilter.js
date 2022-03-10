@@ -2,15 +2,17 @@ import React from "react";
 
 import { useState } from "react";
 
+const initialFilterValues = {
+  price: '',
+  productType: '',
+  productColors: '',
+  rating: '',
+  text: ''
+}
+
 const ProductFilter = (props) => {
 
-  const initialFilterValues = {
-    price: "",
-    productType: "",
-    productColors: "",
-    rating: "",
-    text: ""
-  }
+  
 
   // const { filterValues, setFilterValues } = props;
   const [filterValues, setFilterValues] = useState(initialFilterValues)
@@ -88,10 +90,7 @@ const ProductFilter = (props) => {
           Lipstick <input type="checkbox" name="productType" checked={filterValues.productType} onChange={handleChange} />
           Mascara <input type="checkbox" name="productType" checked={filterValues.productType} onChange={handleChange} />
         </label> */}
-        <label>
-          text
-          <input type="text" name="text" value={filterValues.text} onChange={handleChange}/>
-        </label>
+        <input type="text"></input>
       </form>
     </div>
   );

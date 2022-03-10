@@ -17,7 +17,6 @@ function App() {
   useEffect(()=>{
     axios.get("http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline")
       .then(res => {
-        // console.log(res);
         setProducts(res.data);
       })
       .catch(err => {
